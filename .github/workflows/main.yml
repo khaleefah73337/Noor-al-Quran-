@@ -1,4 +1,4 @@
-name: Build Noor Al-Quran APK
+name: noor_al_quran
 
 on:
   workflow_dispatch:
