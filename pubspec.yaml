@@ -47,7 +47,7 @@ dependencies:
   geolocator: ^9.0.2
 
   # Search & Analytics
-  algolia: ^6.0.0
+  algolia: ^5.2.0
   firebase_analytics: ^10.7.0
 
   # Notifications
