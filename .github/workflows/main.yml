@@ -39,5 +39,5 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: Noor-Al-Quran-APK
+          name: noor_al_quran
           path: build/app/outputs/flutter-apk/app-release.apk
