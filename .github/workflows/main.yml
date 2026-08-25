@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: read
+      contents: write
 
     steps:
       - name: Checkout source
@@ -36,8 +36,18 @@ jobs:
       - name: Build APK
         run: flutter build apk --release
 
-      - name: Upload APK
+      - name: Upload APK to Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: noor_al_quran
           path: build/app/outputs/flutter-apk/app-release.apk
+
+      - name: Commit and Push APK to Repository
+        run: |
+          mkdir -p releases
+          cp build/app/outputs/flutter-apk/app-release.apk releases/app-release-${{ github.run_number }}.apk
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add releases/
+          git commit -m "Build #${{ github.run_number }}: Add APK release" || echo "No changes to commit"
+          git push
